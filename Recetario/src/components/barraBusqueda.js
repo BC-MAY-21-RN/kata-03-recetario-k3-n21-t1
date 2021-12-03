@@ -4,7 +4,7 @@ import {Searchbar} from 'react-native-paper';
 
 
 const barraBusqueda = () => {
-    const [search, setSearch] = useState(' ');
+    const [search, setSearch] = useState('');
 
     const updateSearch = (newValue) => {
         setSearch(newValue);
@@ -13,8 +13,8 @@ const barraBusqueda = () => {
     return(
         <Searchbar 
         placeholder="what do you want to eat"
-        onChangeText={updateSearch}
-        value={search}
+        onChangeText={updateSearch} 
+        value={search} 
         />
     )
 }

@@ -1,58 +1,60 @@
 import React, {useEffect, useState} from 'react';
-import {Text, Image, TouchableOpacity, FlatList} from 'react-native';
-import style from "../assets/styles";
-import recipesJson from '../../recipe.json';
+import {
+  Text,
+  Image,
+  FlatList,
+  TouchableHighlight,
+  View,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
+import style from '../assets/styles';
+import {recipes} from '../../recipe.json';
 
-const Recipes = (props) => {
-    const [isLoading, setLoading] = useState(false);
-    const [recipes, setRecipes] = useState([]);
+const ListaItem = () => {
+  const [props, setProps] = useState([]);
 
-    getRecipes = () => {
-      fetch(recipesJson)
-      .then((response) => response.json())
-      .then((json) => setRecipes(json))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-    }
+  const renderRecipes = ({item}) => {
+    console.log(item);
+    return (
+      <TouchableHighlight>
+        <View style={styles.BoxContainer}>
+          <Image style={styles.stretch} source={{uri: item.image}} />
+          <Text style={styles.Text}>{item.title}</Text>
+        </View>
+      </TouchableHighlight>
+    );
+  };
 
-    useEffect (() => {
-      setLoading(true);
-      getRecipes();
-    }, []);
+  return (
+    <View>
+      <ScrollView>
+        <FlatList
+          data={recipes}
+          horizontal={true}
+          renderItem={renderRecipes}
+          keyExtractor={item => item.id}
+        />
+      </ScrollView>
+    </View>
+  );
+};
 
+export default ListaItem;
 
-    return(
-      <View>
-            {isLoading ? <Text>Loading</Text>:(
-                <FlatList 
-                    data = {recipes} keyExtractor={({id}) => id.toString()}
-                    renderItem = {({item}) => <Text>{item.title}</Text>} />
-            )
-                
-                }
-      </View>
-    )
-}
-
-export default Recipes;
-
-
-
-// const RecipeList = ({recipe, cardSize}) => {
-//   return (
-//     <>
-//       <TouchableOpacity>
-//         <Image
-//           source={{uri: recipe.image}}
-//           style={cardSize === 'big' ? style.bigImage : style.smallImage}
-//         />
-//         <Text style={cardSize === 'big' ? style.bigTitle : style.smallTitle}>
-//           {recipe.title}
-//         </Text>
-//       </TouchableOpacity>
-//     </>
-//   );
-// };
-
-// export default RecipeList;
-
+const styles = StyleSheet.create({
+  Text: {
+    color: '#fff',
+    fontSize: 20,
+    marginTop: -20
+  },
+  BoxContainer: {
+    width: 200,
+    marginRight: 15
+  },
+  stretch: {
+    width: 180,
+    height: 180,
+    resizeMode: 'center',
+  },
+});

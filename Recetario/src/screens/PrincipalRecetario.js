@@ -3,12 +3,11 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   TouchableWithoutFeedback,
-  Keyboard,
+  Keyboard
 } from 'react-native';
 import SearchBar from '../components/barraBusqueda';
-import Recipes from '../components/listaItem';
+import ListaItem from '../components/listaItem';
 
 // import RecipeCont from '../components/recipeCont';
 // import SearchBar from '../components/barraBusqueda';
@@ -28,7 +27,7 @@ const PrincipalRecetario = () => {
           </View>
           <View style={styles.ContainerItems}>
             <Text style={styles.TextSub}>TRENDING</Text>
-            {/* <Recipes /> */}
+            <ListaItem />
           </View>
           <View style={styles.ContainerItems}>
             <Text style={styles.TextSub}>RECENTS</Text>
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   ContainerItems: {
-    flex: 2,
+    // flex: 2,
   },
   ContainerRecents: {
     flex: 3,
