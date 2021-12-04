@@ -8,19 +8,19 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import style from '../assets/styles';
 import {recipes} from '../../recipe.json';
+import style from "../assets/styles";
 
-const ListaItem = () => {
+const recents = () => {
   const [props, setProps] = useState([]);
 
   const renderRecipes = ({item}) => {
-    if (item.section == 'trending') {
+    if (item.section == 'recent') {
       return (
         <TouchableHighlight>
           <View>
-            <Image style={style.smallImage} source={{uri: item.image}} />
-            <Text style={style.smallTitle}>{item.title}</Text>
+            <Image style={style.bigImage} source={{uri: item.image}} />
+            <Text style={style.bigTitle}>{item.title}</Text>
           </View>
         </TouchableHighlight>
       );
@@ -41,5 +41,5 @@ const ListaItem = () => {
   );
 };
 
-export default ListaItem;
+export default recents;
 

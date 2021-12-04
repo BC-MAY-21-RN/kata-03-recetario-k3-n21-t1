@@ -6,70 +6,32 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from 'react-native';
-import SearchBar from '../components/barraBusqueda';
+import BarraBusqueda from '../components/BarraBusqueda';
 import ListaItem from '../components/listaItem';
-
-// import RecipeCont from '../components/recipeCont';
-// import SearchBar from '../components/barraBusqueda';
-// import { recipes } from './recipe.json';
+import Recents from '../components/Recents';
+import style from '../assets/styles';
 
 const PrincipalRecetario = () => {
-  // const trending = recipes.filter(recipe => recipe.section === 'trending');
-  // const recent = recipes.filter(recipe => recipe.section === 'recent');
 
   return (
-    <>
+    <View style={style.home}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} >
-        <View style={styles.ContainerBackG}>
-          <Text style={styles.Text}>Recipe Book</Text>
+        <View >
+          <Text style={style.TextMain}>Recipe Book</Text>
           <View>
-            <SearchBar />
+            <BarraBusqueda />
           </View>
-          <View style={styles.ContainerItems}>
-            <Text style={styles.TextSub}>TRENDING</Text>
+          <View style={style.ContainerItems}>
+            <Text style={style.TextSub}>TRENDING</Text>
             <ListaItem />
           </View>
-          <View style={styles.ContainerItems}>
-            <Text style={styles.TextSub}>RECENTS</Text>
+          <View style={style.ContainerItems}>
+            <Text style={style.TextSub}>RECENTS</Text>
+            <Recents />
           </View>
         </View>
       </TouchableWithoutFeedback>
-    </>
+    </View >
   );
 };
 export default PrincipalRecetario;
-
-const styles = StyleSheet.create({
-  ContainerBackG: {
-    padding: 1,
-    backgroundColor: '#121212',
-    flex: 1,
-  },
-  Text: {
-    fontSize: 40,
-    textAlign: 'center',
-    marginTop: 0,
-    color: '#FEC260',
-    fontWeight: 'bold',
-  },
-  ContainerItems: {
-    // flex: 2,
-  },
-  ContainerRecents: {
-    flex: 3,
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: 'white',
-    color: '#FEC260',
-  },
-  TextSub: {
-    fontSize: 20,
-    textAlign: 'left',
-    fontWeight: 'bold',
-    color: '#FEC260',
-  },
-});
