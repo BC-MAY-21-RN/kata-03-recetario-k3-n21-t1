@@ -3,26 +3,31 @@ import {
   Text,
   Image,
   FlatList,
-  TouchableHighlight,
+  TouchableWithoutFeedback,
   View,
   StyleSheet,
   ScrollView,
 } from 'react-native';
 import style from '../assets/styles';
 import {recipes} from '../../recipe.json';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import recipeDetails from '../screens/recipeDetails';
 
-const ListaItem = () => {
+const ListaItem = ({navigation}) => {
+  // const Stack = createNativeStackNavigator();
+
   const [props, setProps] = useState([]);
 
   const renderRecipes = ({item}) => {
     if (item.section == 'trending') {
       return (
-        <TouchableHighlight>
-          <View>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate({recipeDetails})}>
+          <View >
             <Image style={style.smallImage} source={{uri: item.image}} />
             <Text style={style.smallTitle}>{item.title}</Text>
           </View>
-        </TouchableHighlight>
+        </TouchableWithoutFeedback >
       );
     }
   };
@@ -42,4 +47,3 @@ const ListaItem = () => {
 };
 
 export default ListaItem;
-

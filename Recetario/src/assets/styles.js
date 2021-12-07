@@ -96,7 +96,17 @@ const style = StyleSheet.create({
         maxWidth: 150,
         marginLeft: 12,
         textAlign: 'center'
-    }
+    },
+    containerTop: {
+        flex: 1,
+        flexDirection: 'column',
+    },
+    imageBackground: {
+        flex: 1,
+        resizeMode: 'contain',
+        justifyContent: 'center',
+    },
+
 });
 
 export default style;
