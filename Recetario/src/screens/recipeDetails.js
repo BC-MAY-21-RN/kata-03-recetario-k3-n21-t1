@@ -1,29 +1,31 @@
-import React from 'react'
-import {View, Image, Text, useState, useEffect} from 'react-native'
+import React from 'react';
+import {View, Image, Text, useState, useEffect} from 'react-native';
 import style from '../assets/styles';
-import { Table, Row, Rows } from 'react-native-table-component';
+import {Table, Row, Rows} from 'react-native-table-component';
 
+export default RecipeDetails = () => {
+  // const [ingredients,setIngredients] = useState([])
+  // const [titleTable, setTitleTable] = useState(['Ingredients','Size'])
 
-export default RecipeDetails = (recipe)=>{
-    const [ingredients,setIngredients] = useState([])
-    const [titleTable, setTitleTable] = useState(['Ingredients','Size'])
-    
-    const formatIngredients = recipe => {
-        recipe.ingredients.map(objIngredient => {
-            let ingredientAndSize = []
-            ingredientAndSize.push(objIngredient.ingredient)
-            ingredientAndSize.push(objIngredient.size)
-            setIngredients(ingredients.concat(ingredientAndSize))
-        })
-    }
+  // const formatIngredients = recipe => {
+  //     recipe.ingredients.map(objIngredient => {
+  //         let ingredientAndSize = []
+  //         ingredientAndSize.push(objIngredient.ingredient)
+  //         ingredientAndSize.push(objIngredient.size)
+  //         setIngredients(ingredients.concat(ingredientAndSize))
+  //     })
+  // }
 
-    useEffect(() => {
-        formatIngredients()  
-    }, [])
+  // useEffect(() => {
+  //     formatIngredients()
+  // }, [])
 
-    return(
-        <>
-        <View style={style.containerTop}>
+  return (
+    <>
+        <View>
+            <Text>Recipe Details</Text>
+        </View>
+      {/* <View style={style.containerTop}>
             <View>
                 <Image style={style.imageBackground} source={{uri: recipe.image}}/>
                 <Text>{recipe.title}</Text>
@@ -40,13 +42,7 @@ export default RecipeDetails = (recipe)=>{
                     <Rows data={ingredients} textStyle={styles.text}/>
                 </Table>
             </View>
-        </View>
-        </>
-    )
-
-    const styles = StyleSheet.create({
-        container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
-        head: { height: 40, backgroundColor: '#f1f8ff' },
-        text: { margin: 6 }
-      });
-}
+        </View> */}
+    </>
+  );
+};

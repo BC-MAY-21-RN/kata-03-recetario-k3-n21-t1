@@ -12,22 +12,17 @@ import style from '../assets/styles';
 import {recipes} from '../../recipe.json';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import recipeDetails from '../screens/recipeDetails';
 
-const ListaItem = ({navigation}) => {
-  // const Stack = createNativeStackNavigator();
-
-  const [props, setProps] = useState([]);
-
+const ListaItem = () => {
   const renderRecipes = ({item}) => {
     if (item.section == 'trending') {
       return (
-        <TouchableWithoutFeedback onPress={() => navigation.navigate({recipeDetails})}>
-          <View >
+        <>
+          <View>
             <Image style={style.smallImage} source={{uri: item.image}} />
             <Text style={style.smallTitle}>{item.title}</Text>
           </View>
-        </TouchableWithoutFeedback >
+        </>
       );
     }
   };
