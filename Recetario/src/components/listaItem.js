@@ -22,7 +22,7 @@ const ListaItem = ({navigation}) => {
   const renderRecipes = ({item}) => {
     if (item.section == 'trending') {
       return (
-        <TouchableWithoutFeedback onPress={() => navigation.navigate({recipeDetails})}>
+        <TouchableWithoutFeedback>
           <View >
             <Image style={style.smallImage} source={{uri: item.image}} />
             <Text style={style.smallTitle}>{item.title}</Text>
